@@ -4,6 +4,14 @@ const jsforce = require('jsforce');
 var request = require('request');
 var bodyParser = require('body-parser');
 var router = express.Router();
+const http = require('http');
+
+const requestListener = function (req, res) {
+  res.writeHead(200);
+  res.end('Hello, World!');
+}
+
+const server = http.createServer(requestListener);
 
 var index = require('./index');
 const app = express();
@@ -36,5 +44,4 @@ res.render('error');
 
 module.exports = app;
 
-var port_number = server.listen(process.env.PORT || 3000);
-app.listen(port_number);
+app.listen(process.env.PORT || 3000);
